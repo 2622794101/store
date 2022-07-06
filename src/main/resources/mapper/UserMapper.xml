@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lgm.store.mapper.UserMapper"><!-- 接口的位置 -->
+    <insert id="insert">
+        insert into t_user( username, password, salt, phone, email, gender
+                          , avatar, is_delete, created_user, created_time
+                          , modified_user, modified_time)
+            value ( #{username}, #{password}, #{salt}, #{phone}, #{email}, #{gender}
+            , #{avatar}, #{isDelete}, #{createdUser}, #{createdTime}
+            , #{modifiedUser}, #{modifiedTime}
+            )
+    </insert>
+
+    <select id="findByUsername" resultType="user">
+        select *
+        from t_user
+        where username = #{username}
+    </select>
+
+    <select id="findByUid" resultType="user">
+        select *
+        from t_user
+        where uid = #{uid}
+    </select>
+
+    <update id="updatePasswordByUid">
+        update t_user
+        set password      = #{password}
+          , modified_user = #{modifiedUser}
+          , modified_time = #{modifiedTime}
+        where uid = #{uid}
+    </update>
+
+    <update id="updateUserData">
+        UPDATE
+        t_user
+        SET
+        <if test="phone != null">phone = #{phone},</if>
+        <if test="email != null">email = #{email},</if>
+        <if test="gender != null">gender = #{gender},</if>
+        modified_user = #{modifiedUser},
+        modified_time = #{modifiedTime}
+        WHERE
+        uid = #{uid}
+    </update>
+    <update id="updateAvatarByUid">
+        update t_user
+        set avatar        = #{avatar},
+            modified_user = #{modifiedUser},
+            modified_time = #{modifiedTime}
+        WHERE uid = #{uid}
+    </update>
+
+</mapper>

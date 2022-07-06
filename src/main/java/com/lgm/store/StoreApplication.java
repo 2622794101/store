@@ -1,9 +1,11 @@
 package com.lgm.store;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@MapperScan("com.lgm.store.mapper")
 public class StoreApplication {
 
     public static void main(String[] args) {
