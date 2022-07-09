@@ -9,11 +9,12 @@ spring:
       max-file-size: 20MB
       max-request-size: 20MB
 
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.lgm.store.entitly
   configuration:
-    map-underscore-to-camel-case: true
+    map-underscore-to-camel-case: true #自动驼峰映射
 
 user:
   address:
