@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author L
@@ -44,5 +45,17 @@ public class AddressServiceImpl  implements AddressService{
         if (insert != 1){
             throw new InsertException("插入收获数据时出现未知错误，请联系管理员解决！");
         }
+    }
+
+    @Override
+    public List<Address> showAddressByUid(Integer uid) {
+        List<Address> addresses = addressMapper.selectAddressByUid(uid);
+        return addresses;
+    }
+
+    @Override
+    public Address showAddressByAid(Integer aid) {
+        Address address = addressMapper.selectAddressByAid(aid);
+        return address;
     }
 }

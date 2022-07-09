@@ -2,6 +2,8 @@ package com.lgm.store.mapper;
 
 import com.lgm.store.entitly.Address;
 
+import java.util.List;
+
 /**
  * @author L
  * @description 针对表【t_address】的数据库操作Mapper
@@ -14,4 +16,7 @@ public interface AddressMapper {
 
     int insert(Address address);
 
+    List<Address> selectAddressByUid(Integer uid);
+
+    Address selectAddressByAid(Integer aid);
 }
